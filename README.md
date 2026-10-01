@@ -54,10 +54,12 @@ ai_channels_feature_engineering/
 │   ├── reaction_analysis.ipynb       # отдельный анализ реакций
 │   ├── utils.py                      # общие вспомогательные функции
 │   ├── images/                       # графики, которые сохраняет cluster_comparison.ipynb
-│   └── tables/                       # csv-таблицы, которые сохраняет cluster_comparison.ipynb
+│   └── tables/                       # csv из более ранних версий анализа вовлеченности, текущим кодом не генерируются
 └── data/
-    ├── dataset.csv                   # копия итогового датасета из ai_channels_research (вход пайплайна)
-    ├── dataset_updated.csv           # результат 1_text_processing.ipynb
+    ├── dataset_raw.csv               # копия итогового датасета из ai_channels_research (вход пайплайна)
+    ├── dataset_cleaned.csv           # результат 1_text_processing.ipynb
+    ├── dataset_texts_only.csv        # только текст постов (channel, post_id, text, text_clean)
+    ├── dataset_engagement_features_draft.csv  # черновая ветка с метриками вовлеченности и форматирования текста, не используется в текущем пайплайне
     ├── split/                        # посты, разбитые по блокам
     │   ├── 01_meta.csv
     │   ├── 02_text.csv
@@ -77,7 +79,7 @@ ai_channels_feature_engineering/
 
 ## Как это связано с ai_channels_research
 
-Этот проект начинается с датасета, который `ai_channels_research` выгружает в `data/final/ai_publics_dataset.csv`. Этот файл вручную скопирован сюда как `data/dataset.csv` и дальше проходит через весь пайплайн выше. Если исходный датасет в `ai_channels_research` обновится, `data/dataset.csv` нужно будет скопировать заново и прогнать ноутбуки с начала.
+Этот проект начинается с датасета, который `ai_channels_research` выгружает в `data/final/ai_publics_dataset.csv`. Этот файл вручную скопирован сюда как `data/dataset_raw.csv` и дальше проходит через весь пайплайн выше. Если исходный датасет в `ai_channels_research` обновится, `data/dataset_raw.csv` нужно будет скопировать заново и прогнать ноутбуки с начала.
 
 ## Зависимости
 
