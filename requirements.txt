@@ -1,0 +1,15 @@
+pandas==3.0.2
+numpy==1.26.4
+scipy==1.17.1
+matplotlib==3.10.9
+seaborn==0.13.2
+scikit-learn==1.8.0
+hdbscan==0.8.42
+umap-learn==0.5.12
+sentence-transformers==2.7.0
+ruts==0.8.1
+nltk==3.9.2
+statsmodels==0.14.5
+emoji==2.15.0
+tqdm==4.67.3
+jupyterlab==4.4.1

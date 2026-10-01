@@ -53,7 +53,6 @@ ai_channels_feature_engineering/
 │   ├── cluster_comparison.ipynb      # сравнение кластеров всех моделей
 │   ├── reaction_analysis.ipynb       # отдельный анализ реакций
 │   ├── utils.py                      # общие вспомогательные функции
-│   ├── images/                       # графики, которые сохраняет cluster_comparison.ipynb
 │   └── tables/                       # csv из более ранних версий анализа вовлеченности, текущим кодом не генерируются
 └── data/
     ├── dataset_raw.csv               # копия итогового датасета из ai_channels_research (вход пайплайна)
@@ -74,13 +73,18 @@ ai_channels_feature_engineering/
     │   ├── candidate_examples/       # примеры постов по кластерам для ручной проверки
     │   ├── final_examples/
     │   └── channel_summary_table.csv
-    └── plots/                        # графики из ноутбуков 2, 4 и cluster_comparison
+    └── plots/                        # все графики пайплайна (ноутбуки 2, 4, cluster_comparison)
+        └── legacy_unused/             # графики из более ранних версий анализа, текущим кодом не генерируются
 ```
 
 ## Как это связано с ai_channels_research
 
 Этот проект начинается с датасета, который `ai_channels_research` выгружает в `data/final/ai_publics_dataset.csv`. Этот файл вручную скопирован сюда как `data/dataset_raw.csv` и дальше проходит через весь пайплайн выше. Если исходный датасет в `ai_channels_research` обновится, `data/dataset_raw.csv` нужно будет скопировать заново и прогнать ноутбуки с начала.
 
-## Зависимости
+## Установка
 
-Отдельного `requirements.txt` в проекте нет, окружение (venv) не входит в архив. Основные библиотеки, которые используются в ноутбуках: `pandas`, `numpy`, `scikit-learn`, `scipy`, `matplotlib`, `seaborn`, `ruts`, `sentence-transformers`, `umap-learn`, `hdbscan`.
+```bash
+pip install -r requirements.txt
+```
+
+Виртуальные окружения (venv), в которых реально считался проект, в репозиторий не входят. `requirements.txt` собран из них отдельно: ноутбуки `1_text_processing`, `2_ruts_metrics`, `2_ruts_engagement_analysis`, `cluster_comparison` и `reaction_analysis` использовали один набор библиотек (`ruts`, `nltk`, `statsmodels`, `emoji`), а `3_vectorization` и `4_clusterization_*` — другой, с моделями эмбеддингов (`sentence-transformers`, `umap-learn`, `hdbscan`). Версии пакетов из этих двух окружений не проверялись на совместимость друг с другом в одном venv.
